@@ -11,11 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXFKgeMo.o
-idloc IDLOC 5 2000 2000 4 2 1
-reset_vec CODE 0 0 0 3 2 1
-end_init CODE 0 C C 3 2 1
-config CONFIG 4 2007 2007 2 2 1
 $dist/default/production/Slave.X.production.o
 cinit CODE 0 F F 5 2 1
 idloc IDLOC 5 2000 2000 4 2 1
@@ -27,6 +22,11 @@ maintext CODE 0 14 14 AA 2 1
 cstackCOMMON COMMON 1 70 70 4 1 1
 intentry CODE 0 4 4 8 2 1
 bssCOMMON COMMON 1 74 74 1 1 1
+config CONFIG 4 2007 2007 2 2 1
+$/tmp/xcXFgjeIN.o
+idloc IDLOC 5 2000 2000 4 2 1
+reset_vec CODE 0 0 0 3 2 1
+end_init CODE 0 C C 3 2 1
 config CONFIG 4 2007 2007 2 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -72,12 +72,12 @@ STRING 166-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/Slave.X.production.o
-F cinit CODE >493:/tmp/xcXDECinH.s
-F cinit CODE >496:/tmp/xcXDECinH.s
-F cinit CODE >507:/tmp/xcXDECinH.s
-10 cinit CODE >513:/tmp/xcXDECinH.s
-10 cinit CODE >515:/tmp/xcXDECinH.s
-11 cinit CODE >516:/tmp/xcXDECinH.s
+F cinit CODE >493:/tmp/xcXGIkANb.s
+F cinit CODE >496:/tmp/xcXGIkANb.s
+F cinit CODE >507:/tmp/xcXGIkANb.s
+10 cinit CODE >513:/tmp/xcXGIkANb.s
+10 cinit CODE >515:/tmp/xcXGIkANb.s
+11 cinit CODE >516:/tmp/xcXGIkANb.s
 4 intentry CODE >49:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
 161 text4 CODE >219:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
 161 text4 CODE >221:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
@@ -215,19 +215,19 @@ __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _TMR0 1 0 ABS 0 - dist/default/production/Slave.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcXFKgeMo.o
+___sp 0 0 STACK 2 stack /tmp/xcXFgjeIN.o
 _main 28 0 CODE 0 maintext dist/default/production/Slave.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production/Slave.X.production.o
-start 18 0 CODE 0 init /tmp/xcXFKgeMo.o
+start 18 0 CODE 0 init /tmp/xcXFgjeIN.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production/Slave.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXFKgeMo.o
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXFKgeMo.o
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXFKgeMo.o
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXFKgeMo.o
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXFKgeMo.o
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXFKgeMo.o
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production/Slave.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production/Slave.X.production.o
@@ -239,13 +239,13 @@ _SSPCONbits 14 0 ABS 0 - dist/default/production/Slave.X.production.o
 _CCPR1L 15 0 ABS 0 - dist/default/production/Slave.X.production.o
 _CCPR2L 1B 0 ABS 0 - dist/default/production/Slave.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - /tmp/xcXFKgeMo.o
-___stacklo 0 0 ABS 0 - /tmp/xcXFKgeMo.o
+___stackhi 0 0 ABS 0 - /tmp/xcXFgjeIN.o
+___stacklo 0 0 ABS 0 - /tmp/xcXFgjeIN.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production/Slave.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production/Slave.X.production.o
 __end_ofi1_reset_TMR0 2CC 0 CODE 0 text4 dist/default/production/Slave.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production/Slave.X.production.o
-___int_sp 0 0 STACK 2 stack /tmp/xcXFKgeMo.o
+___int_sp 0 0 STACK 2 stack /tmp/xcXFgjeIN.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -290,7 +290,7 @@ _isr 27A 0 CODE 0 text3 dist/default/production/Slave.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production/Slave.X.production.o
 __end_of_isr 2B8 0 CODE 0 text3 dist/default/production/Slave.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXFKgeMo.o
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXFgjeIN.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production/Slave.X.production.o
 __pmaintext 28 0 CODE 0 maintext dist/default/production/Slave.X.production.o
 __Lcommon 0 0 ABS 0 common -

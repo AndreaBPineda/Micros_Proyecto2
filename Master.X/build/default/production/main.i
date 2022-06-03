@@ -2654,12 +2654,6 @@ extern __bank0 __bit __timeout;
 
 
 
-uint8_t servo_3 = 0;
-uint8_t servo_4 = 0;
-
-uint8_t counter_PWM3 = 0;
-uint8_t counter_PWM4 = 0;
-
 uint8_t data_SPI = 0;
 
 
@@ -2694,6 +2688,20 @@ void __attribute__((picinterrupt(("")))) isr (void)
         }
 
 
+        else if (ADCON0bits.CHS == 0b0010)
+        {
+            CCPR1L = (ADRESH>>1)+123;
+            CCP1CONbits.DC1B = (ADRESH & 0b01);
+            CCP1CONbits.DC1B0 = (ADRESH>>7);
+        }
+
+
+        else if (ADCON0bits.CHS == 0b0011)
+        {
+            CCPR2L = (ADRESH>>1)+123;
+            CCP1CONbits.DC1B = (ADRESH & 0b01);
+            CCP1CONbits.DC1B0 = (ADRESH>>7);
+        }
 
         PIR1bits.ADIF = 0;
     }

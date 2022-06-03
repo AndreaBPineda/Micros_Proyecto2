@@ -37,12 +37,6 @@
 
 //-------------------- Variables -----------------------------------------------
 //------------------------------------------------------------------------------
-uint8_t servo_3 = 0;
-uint8_t servo_4 = 0;
-
-uint8_t counter_PWM3 = 0;
-uint8_t counter_PWM4 = 0;
-
 uint8_t data_SPI = 0;
 
 //-------------------- Declaración de funciones --------------------------------
@@ -76,7 +70,21 @@ void __interrupt() isr (void)
             PORTDbits.RD1 = 1;          // Selector Servo 2: encendido
         }
         
-        // Recordatorio: Faltan los servos 3 y 4
+        // Servo 3
+        else if (ADCON0bits.CHS == 0b0010)
+        {
+            CCPR1L = (ADRESH>>1)+123;
+            CCP1CONbits.DC1B = (ADRESH & 0b01);
+            CCP1CONbits.DC1B0 = (ADRESH>>7);
+        }
+        
+        // Servo 4
+        else if (ADCON0bits.CHS == 0b0011)
+        {
+            CCPR2L = (ADRESH>>1)+123;
+            CCP1CONbits.DC1B = (ADRESH & 0b01);
+            CCP1CONbits.DC1B0 = (ADRESH>>7);
+        }
         
         PIR1bits.ADIF = 0;              // Desactivar interrupcion
     }
