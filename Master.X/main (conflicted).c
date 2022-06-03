@@ -46,9 +46,6 @@ uint8_t servo2 = 0;
 uint8_t servo3 = 0;
 uint8_t servo4 = 0;
 
-uint8_t servo3_READ = 0;
-uint8_t servo4_READ = 0;
-
 //-------------------- Declaración de funciones --------------------------------
 //------------------------------------------------------------------------------
 void setup(void);                                   // Configuración del PIC
@@ -116,46 +113,14 @@ void __interrupt() isr (void)
         if (!PORTBbits.RB0)
         {
             flag_EEPROM = !flag_EEPROM;  // Invertir valor de la bandera
-            PORTAbits.RA6 = flag_EEPROM;
-            ADCON0bits.ADON = flag_EEPROM;
         }
         
         // Pushbutton 2: Posicion 1 a registrar
         else if (!PORTBbits.RB1)
         {
             if (flag_EEPROM)             // 1: Registrar posicion 1
-            {   
-                write_EEPROM(0x00, servo1);
-                write_EEPROM(0x01, servo2);
-                write_EEPROM(0x02, servo3);
-                write_EEPROM(0x03, servo4);
-            }
-            
-            else
             {
-                data_SPI = read_EEPROM(0x00);
-                PORTDbits.RD0 = 1;
-                PORTDbits.RD0 = 0;
-                SSPBUF = data_SPI;
-                
-                __delay_ms(10);
-                
-                data_SPI = read_EEPROM(0x01);
-                PORTDbits.RD0 = 0;
-                PORTDbits.RD0 = 1;
-                SSPBUF = data_SPI;
-                
-                __delay_ms(10);
-                
-                servo3_READ = read_EEPROM(0x02);
-                CCPR1L = (servo3_READ>>1)+123;
-                CCP1CONbits.DC1B = (servo3_READ & 0b01);
-                CCP1CONbits.DC1B0 = (servo3_READ>>7);
-                
-                servo4_READ = read_EEPROM(0x03);
-                CCPR2L = (servo4_READ>>1)+123;
-                CCP1CONbits.DC1B = (servo4_READ & 0b01);
-                CCP1CONbits.DC1B0 = (servo4_READ>>7);
+                write_EEPROM(ADDR_1, current_SERVO);
             }
         }
         
@@ -164,37 +129,7 @@ void __interrupt() isr (void)
         {
             if (flag_EEPROM)            // 1: Registrar posicion 2
             {
-                write_EEPROM(0x04, servo1);
-                write_EEPROM(0x05, servo2);
-                write_EEPROM(0x06, servo3);
-                write_EEPROM(0x07, servo4);
-            }
-            
-            else
-            { 
-                data_SPI = read_EEPROM(0x04);
-                PORTDbits.RD0 = 1;
-                PORTDbits.RD0 = 0;
-                SSPBUF = data_SPI;
-                
-                __delay_ms(10);
-                
-                data_SPI = read_EEPROM(0x05);
-                PORTDbits.RD0 = 0;
-                PORTDbits.RD0 = 1;
-                SSPBUF = data_SPI;
-                
-                __delay_ms(10);
-                
-                servo3_READ = read_EEPROM(0x06);
-                CCPR1L = (servo3_READ>>1)+123;
-                CCP1CONbits.DC1B = (servo3_READ & 0b01);
-                CCP1CONbits.DC1B0 = (servo3_READ>>7);
-                
-                servo4_READ = read_EEPROM(0x07);
-                CCPR2L = (servo4_READ>>1)+123;
-                CCP1CONbits.DC1B = (servo4_READ & 0b01);
-                CCP1CONbits.DC1B0 = (servo4_READ>>7);
+                write_EEPROM(ADDR_2, current_SERVO);
             }
         }
         
@@ -270,7 +205,7 @@ void setup(void)                        // Configuración del PIC
     TRISA = 0x0F;                       // PORTA Bits: |0|0|0|0|1|1|1|1|
     PORTA = 0;                          
     
-    TRISB = 0x07;                                        
+    TRISB = 0x00;                                        
     PORTB = 0;     
     
     TRISC = 0x10;                       // PORTC Bits: |0|0|0|1|0|0|0|0|
@@ -365,21 +300,16 @@ void write_EEPROM(uint8_t address, uint8_t data)
     EEADR = address;
     EEDAT = data;
     
-    INTCONbits.GIE = 0;             // Deshabilitar interrupciones
-    
     EECON1bits.EEPGD = 0;           // Escribir EEPROM
     EECON1bits.WREN = 1;            // Habilitar escritura EEPROM
     
+    INTCONbits.GIE = 0;             // Deshabilitar interrupciones
     EECON2 = 0x55;
     EECON2 = 0xAA;
     
     EECON1bits.WR = 1;              // Iniciar escritura
     
-    while(PIR2bits.EEIF == 0);
-    PIR2bits.EEIF = 0;
-    
     EECON1bits.WREN = 0;            // Deshabilitar escritura EEPROM
-    
     INTCONbits.RBIF = 0;            // Limpiar bandera de interrupcion
     INTCONbits.GIE = 1;             // Habilitar interrupciones
     
@@ -389,7 +319,6 @@ void write_EEPROM(uint8_t address, uint8_t data)
 uint8_t read_EEPROM(uint8_t address)
 {
     EEADR = address;
-    
     EECON1bits.EEPGD = 0;           // Lectura EEPROM
     EECON1bits.RD = 1;              // Obtener dato de la EEPROM
     

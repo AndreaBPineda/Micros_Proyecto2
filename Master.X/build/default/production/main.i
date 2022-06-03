@@ -2655,6 +2655,16 @@ extern __bank0 __bit __timeout;
 
 
 uint8_t data_SPI = 0;
+uint8_t flag_EEPROM = 0;
+uint8_t current_SERVO = 0;
+
+uint8_t servo1 = 0;
+uint8_t servo2 = 0;
+uint8_t servo3 = 0;
+uint8_t servo4 = 0;
+
+uint8_t servo3_READ = 0;
+uint8_t servo4_READ = 0;
 
 
 
@@ -2674,6 +2684,7 @@ void __attribute__((picinterrupt(("")))) isr (void)
 
         if (ADCON0bits.CHS == 0b0000)
         {
+            servo1 = ADRESH;
             data_SPI = ADRESH;
             PORTDbits.RD0 = 1;
             PORTDbits.RD1 = 0;
@@ -2682,6 +2693,7 @@ void __attribute__((picinterrupt(("")))) isr (void)
 
         else if (ADCON0bits.CHS == 0b0001)
         {
+            servo2 = ADRESH;
             data_SPI = ADRESH;
             PORTDbits.RD0 = 0;
             PORTDbits.RD1 = 1;
@@ -2690,6 +2702,7 @@ void __attribute__((picinterrupt(("")))) isr (void)
 
         else if (ADCON0bits.CHS == 0b0010)
         {
+            servo3 = ADRESH;
             CCPR1L = (ADRESH>>1)+123;
             CCP1CONbits.DC1B = (ADRESH & 0b01);
             CCP1CONbits.DC1B0 = (ADRESH>>7);
@@ -2698,6 +2711,7 @@ void __attribute__((picinterrupt(("")))) isr (void)
 
         else if (ADCON0bits.CHS == 0b0011)
         {
+            servo4 = ADRESH;
             CCPR2L = (ADRESH>>1)+123;
             CCP1CONbits.DC1B = (ADRESH & 0b01);
             CCP1CONbits.DC1B0 = (ADRESH>>7);
@@ -2711,6 +2725,97 @@ void __attribute__((picinterrupt(("")))) isr (void)
     {
         reset_TMR0();
         INTCONbits.T0IF = 0;
+    }
+
+    if (INTCONbits.RBIF)
+    {
+
+        if (!PORTBbits.RB0)
+        {
+            flag_EEPROM = !flag_EEPROM;
+            PORTAbits.RA6 = flag_EEPROM;
+            ADCON0bits.ADON = flag_EEPROM;
+        }
+
+
+        else if (!PORTBbits.RB1)
+        {
+            if (flag_EEPROM)
+            {
+                write_EEPROM(0x00, servo1);
+                write_EEPROM(0x01, servo2);
+                write_EEPROM(0x02, servo3);
+                write_EEPROM(0x03, servo4);
+            }
+
+            else
+            {
+                data_SPI = read_EEPROM(0x00);
+                PORTDbits.RD0 = 1;
+                PORTDbits.RD0 = 0;
+                SSPBUF = data_SPI;
+
+                _delay((unsigned long)((10)*(4000000/4000.0)));
+
+                data_SPI = read_EEPROM(0x01);
+                PORTDbits.RD0 = 0;
+                PORTDbits.RD0 = 1;
+                SSPBUF = data_SPI;
+
+                _delay((unsigned long)((10)*(4000000/4000.0)));
+
+                servo3_READ = read_EEPROM(0x02);
+                CCPR1L = (servo3_READ>>1)+123;
+                CCP1CONbits.DC1B = (servo3_READ & 0b01);
+                CCP1CONbits.DC1B0 = (servo3_READ>>7);
+
+                servo4_READ = read_EEPROM(0x03);
+                CCPR2L = (servo4_READ>>1)+123;
+                CCP1CONbits.DC1B = (servo4_READ & 0b01);
+                CCP1CONbits.DC1B0 = (servo4_READ>>7);
+            }
+        }
+
+
+        else if (!PORTBbits.RB2)
+        {
+            if (flag_EEPROM)
+            {
+                write_EEPROM(0x04, servo1);
+                write_EEPROM(0x05, servo2);
+                write_EEPROM(0x06, servo3);
+                write_EEPROM(0x07, servo4);
+            }
+
+            else
+            {
+                data_SPI = read_EEPROM(0x04);
+                PORTDbits.RD0 = 1;
+                PORTDbits.RD0 = 0;
+                SSPBUF = data_SPI;
+
+                _delay((unsigned long)((10)*(4000000/4000.0)));
+
+                data_SPI = read_EEPROM(0x05);
+                PORTDbits.RD0 = 0;
+                PORTDbits.RD0 = 1;
+                SSPBUF = data_SPI;
+
+                _delay((unsigned long)((10)*(4000000/4000.0)));
+
+                servo3_READ = read_EEPROM(0x06);
+                CCPR1L = (servo3_READ>>1)+123;
+                CCP1CONbits.DC1B = (servo3_READ & 0b01);
+                CCP1CONbits.DC1B0 = (servo3_READ>>7);
+
+                servo4_READ = read_EEPROM(0x07);
+                CCPR2L = (servo4_READ>>1)+123;
+                CCP1CONbits.DC1B = (servo4_READ & 0b01);
+                CCP1CONbits.DC1B0 = (servo4_READ>>7);
+            }
+        }
+
+        INTCONbits.RBIF = 0;
     }
 
 
@@ -2782,7 +2887,7 @@ void setup(void)
     TRISA = 0x0F;
     PORTA = 0;
 
-    TRISB = 0x00;
+    TRISB = 0x07;
     PORTB = 0;
 
     TRISC = 0x10;
@@ -2793,6 +2898,12 @@ void setup(void)
 
     TRISE = 0x00;
     PORTE = 0;
+
+
+    OPTION_REGbits.nRBPU = 0;
+    WPUBbits.WPUB0 = 1;
+    WPUBbits.WPUB1 = 1;
+    WPUBbits.WPUB2 = 1;
 
 
     ADCON0bits.ADCS = 0b01;
@@ -2848,6 +2959,12 @@ void setup(void)
     PIE1bits.SSPIE = 1;
     PIR1bits.SSPIF = 0;
 
+    INTCONbits.RBIE = 1;
+    INTCONbits.RBIF = 0;
+    IOCBbits.IOCB0 = 1;
+    IOCBbits.IOCB1 = 1;
+    IOCBbits.IOCB2 = 1;
+
 
     PORTAbits.RA4 = 1;
     SSPBUF = 0x00;
@@ -2865,16 +2982,21 @@ void write_EEPROM(uint8_t address, uint8_t data)
     EEADR = address;
     EEDAT = data;
 
+    INTCONbits.GIE = 0;
+
     EECON1bits.EEPGD = 0;
     EECON1bits.WREN = 1;
 
-    INTCONbits.GIE = 0;
     EECON2 = 0x55;
     EECON2 = 0xAA;
 
     EECON1bits.WR = 1;
 
+    while(PIR2bits.EEIF == 0);
+    PIR2bits.EEIF = 0;
+
     EECON1bits.WREN = 0;
+
     INTCONbits.RBIF = 0;
     INTCONbits.GIE = 1;
 
@@ -2884,6 +3006,7 @@ void write_EEPROM(uint8_t address, uint8_t data)
 uint8_t read_EEPROM(uint8_t address)
 {
     EEADR = address;
+
     EECON1bits.EEPGD = 0;
     EECON1bits.RD = 1;
 
