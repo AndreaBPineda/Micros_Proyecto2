@@ -40,8 +40,6 @@
 //------------------------------------------------------------------------------
 uint8_t data_SPI = 0;
 uint8_t position_servo = 0;
-uint8_t write_address = 0;
-uint8_t write_data = 0;
 
 uint8_t flag_EEPROM = 0;
 uint8_t flag_EUSART = 0;
@@ -526,7 +524,7 @@ void run_EUSART(void)
             break;
             
         case '2':
-            print("\r Leer/Escribir en la EEPROM (1 o 2, respectivamente): \r");
+            print("\r Escribir/Leer en la EEPROM (1 o 2, respectivamente): \r");
             
             while(!PIR1bits.RCIF);
             
@@ -534,28 +532,10 @@ void run_EUSART(void)
             {
                 case '1':
                     print("\r Ingresar direccion a leer (Hex/Bin): \r");
-                    print("(El valor almacenado se escribe en un servo)\r");
                     
                     while(!PIR1bits.RCIF);
                     
-                    CCPR1L = read_EEPROM(read_serial);      // Servo 3
                     
-                    break;
-                    
-                case '2':
-                    print("\r Ingresar direccion a escribir (Hex/Bin): \r");
-                    
-                    while(!PIR1bits.RCIF);
-                    write_address = read_serial;
-                    
-                    print("\r Ingresar valor a escribir (numerico): \r");
-                    
-                    while(!PIR1bits.RCIF);
-                    write_data = read_serial;
-                    
-                    write_EEPROM(write_address, write_data);
-                    
-                    break;
             }
             
             break;
@@ -566,4 +546,6 @@ void run_EUSART(void)
             PORTAbits.RA5 = flag_EUSART;
             break;
     }
+    
+    return;
 }

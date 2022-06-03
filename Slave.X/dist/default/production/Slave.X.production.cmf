@@ -11,6 +11,11 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$/tmp/xcXnAkcGk.o
+idloc IDLOC 5 2000 2000 4 2 1
+reset_vec CODE 0 0 0 3 2 1
+end_init CODE 0 C C 3 2 1
+config CONFIG 4 2007 2007 2 2 1
 $dist/default/production/Slave.X.production.o
 cinit CODE 0 F F 5 2 1
 idloc IDLOC 5 2000 2000 4 2 1
@@ -22,11 +27,6 @@ maintext CODE 0 14 14 AA 2 1
 cstackCOMMON COMMON 1 70 70 4 1 1
 intentry CODE 0 4 4 8 2 1
 bssCOMMON COMMON 1 74 74 1 1 1
-config CONFIG 4 2007 2007 2 2 1
-$/tmp/xcXFgjeIN.o
-idloc IDLOC 5 2000 2000 4 2 1
-reset_vec CODE 0 0 0 3 2 1
-end_init CODE 0 C C 3 2 1
 config CONFIG 4 2007 2007 2 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -72,128 +72,128 @@ STRING 166-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/Slave.X.production.o
-F cinit CODE >493:/tmp/xcXGIkANb.s
-F cinit CODE >496:/tmp/xcXGIkANb.s
-F cinit CODE >507:/tmp/xcXGIkANb.s
-10 cinit CODE >513:/tmp/xcXGIkANb.s
-10 cinit CODE >515:/tmp/xcXGIkANb.s
-11 cinit CODE >516:/tmp/xcXGIkANb.s
-4 intentry CODE >49:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-161 text4 CODE >219:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-161 text4 CODE >221:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-164 text4 CODE >222:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-165 text4 CODE >224:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-13D text3 CODE >49:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-13D text3 CODE >52:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-143 text3 CODE >54:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-144 text3 CODE >55:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-144 text3 CODE >58:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-148 text3 CODE >60:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-14D text3 CODE >61:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-14E text3 CODE >65:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-154 text3 CODE >67:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-155 text3 CODE >69:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-15C text2 CODE >219:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-15C text2 CODE >221:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-15F text2 CODE >222:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-160 text2 CODE >224:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-BE text1 CODE >133:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-BE text1 CODE >136:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-C2 text1 CODE >137:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-C3 text1 CODE >140:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-C7 text1 CODE >141:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-C8 text1 CODE >144:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-CA text1 CODE >145:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-CD text1 CODE >147:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-D1 text1 CODE >148:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-D4 text1 CODE >150:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-D8 text1 CODE >151:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-DB text1 CODE >153:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-DE text1 CODE >154:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-E1 text1 CODE >156:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-E4 text1 CODE >157:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-E7 text1 CODE >160:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-EB text1 CODE >161:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-ED text1 CODE >162:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-F0 text1 CODE >163:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-F1 text1 CODE >164:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-F2 text1 CODE >165:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-F5 text1 CODE >167:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-F8 text1 CODE >168:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-FC text1 CODE >169:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-100 text1 CODE >170:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-102 text1 CODE >172:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-104 text1 CODE >173:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-106 text1 CODE >174:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-108 text1 CODE >175:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-10C text1 CODE >177:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-110 text1 CODE >178:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-111 text1 CODE >179:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-112 text1 CODE >181:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-116 text1 CODE >182:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-117 text1 CODE >183:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-11A text1 CODE >184:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-11B text1 CODE >186:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-11C text1 CODE >189:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-11D text1 CODE >190:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-11E text1 CODE >191:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-11F text1 CODE >192:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-120 text1 CODE >193:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-121 text1 CODE >196:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-127 text1 CODE >197:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-128 text1 CODE >198:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-129 text1 CODE >199:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-12C text1 CODE >200:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-12D text1 CODE >203:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-12E text1 CODE >204:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-12F text1 CODE >206:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-130 text1 CODE >207:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-133 text1 CODE >209:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-134 text1 CODE >210:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-135 text1 CODE >212:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-138 text1 CODE >213:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-13B text1 CODE >216:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-13C text1 CODE >217:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-14 maintext CODE >74:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-14 maintext CODE >76:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-19 maintext CODE >77:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-1E maintext CODE >78:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-23 maintext CODE >83:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-29 maintext CODE >85:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-2E maintext CODE >85:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-32 maintext CODE >87:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-36 maintext CODE >88:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-37 maintext CODE >90:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-3C maintext CODE >90:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-40 maintext CODE >92:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-44 maintext CODE >93:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-45 maintext CODE >95:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-4A maintext CODE >95:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-4E maintext CODE >97:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-52 maintext CODE >98:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-53 maintext CODE >100:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-58 maintext CODE >100:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-5C maintext CODE >102:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-5F maintext CODE >103:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-5F maintext CODE >105:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-64 maintext CODE >106:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-67 maintext CODE >110:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-6D maintext CODE >111:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-73 maintext CODE >114:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-77 maintext CODE >116:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-79 maintext CODE >116:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-7D maintext CODE >117:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-86 maintext CODE >118:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-89 maintext CODE >118:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-8C maintext CODE >118:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-96 maintext CODE >119:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-97 maintext CODE >122:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-9B maintext CODE >124:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-9D maintext CODE >124:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-A1 maintext CODE >125:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-AA maintext CODE >126:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-AD maintext CODE >126:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
-B0 maintext CODE >126:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+F cinit CODE >493:/tmp/xcXAGkGEp.s
+F cinit CODE >496:/tmp/xcXAGkGEp.s
+F cinit CODE >507:/tmp/xcXAGkGEp.s
+10 cinit CODE >513:/tmp/xcXAGkGEp.s
+10 cinit CODE >515:/tmp/xcXAGkGEp.s
+11 cinit CODE >516:/tmp/xcXAGkGEp.s
+4 intentry CODE >50:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+161 text4 CODE >220:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+161 text4 CODE >222:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+164 text4 CODE >223:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+165 text4 CODE >225:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+13D text3 CODE >50:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+13D text3 CODE >53:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+143 text3 CODE >55:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+144 text3 CODE >56:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+144 text3 CODE >59:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+148 text3 CODE >61:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+14D text3 CODE >62:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+14E text3 CODE >66:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+154 text3 CODE >68:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+155 text3 CODE >70:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+15C text2 CODE >220:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+15C text2 CODE >222:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+15F text2 CODE >223:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+160 text2 CODE >225:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+BE text1 CODE >134:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+BE text1 CODE >137:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+C2 text1 CODE >138:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+C3 text1 CODE >141:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+C7 text1 CODE >142:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+C8 text1 CODE >145:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+CA text1 CODE >146:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+CD text1 CODE >148:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+D1 text1 CODE >149:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+D4 text1 CODE >151:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+D8 text1 CODE >152:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+DB text1 CODE >154:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+DE text1 CODE >155:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+E1 text1 CODE >157:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+E4 text1 CODE >158:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+E7 text1 CODE >161:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+EB text1 CODE >162:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+ED text1 CODE >163:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+F0 text1 CODE >164:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+F1 text1 CODE >165:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+F2 text1 CODE >166:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+F5 text1 CODE >168:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+F8 text1 CODE >169:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+FC text1 CODE >170:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+100 text1 CODE >171:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+102 text1 CODE >173:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+104 text1 CODE >174:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+106 text1 CODE >175:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+108 text1 CODE >176:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+10C text1 CODE >178:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+110 text1 CODE >179:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+111 text1 CODE >180:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+112 text1 CODE >182:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+116 text1 CODE >183:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+117 text1 CODE >184:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+11A text1 CODE >185:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+11B text1 CODE >187:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+11C text1 CODE >190:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+11D text1 CODE >191:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+11E text1 CODE >192:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+11F text1 CODE >193:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+120 text1 CODE >194:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+121 text1 CODE >197:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+127 text1 CODE >198:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+128 text1 CODE >199:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+129 text1 CODE >200:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+12C text1 CODE >201:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+12D text1 CODE >204:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+12E text1 CODE >205:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+12F text1 CODE >207:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+130 text1 CODE >208:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+133 text1 CODE >210:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+134 text1 CODE >211:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+135 text1 CODE >213:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+138 text1 CODE >214:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+13B text1 CODE >217:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+13C text1 CODE >218:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+14 maintext CODE >75:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+14 maintext CODE >77:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+19 maintext CODE >78:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+1E maintext CODE >79:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+23 maintext CODE >84:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+29 maintext CODE >86:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+2E maintext CODE >86:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+32 maintext CODE >88:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+36 maintext CODE >89:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+37 maintext CODE >91:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+3C maintext CODE >91:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+40 maintext CODE >93:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+44 maintext CODE >94:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+45 maintext CODE >96:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+4A maintext CODE >96:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+4E maintext CODE >98:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+52 maintext CODE >99:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+53 maintext CODE >101:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+58 maintext CODE >101:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+5C maintext CODE >103:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+5F maintext CODE >104:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+5F maintext CODE >106:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+64 maintext CODE >107:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+67 maintext CODE >111:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+6D maintext CODE >112:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+73 maintext CODE >115:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+77 maintext CODE >117:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+79 maintext CODE >117:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+7D maintext CODE >118:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+86 maintext CODE >119:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+89 maintext CODE >119:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+8C maintext CODE >119:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+96 maintext CODE >120:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+97 maintext CODE >123:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+9B maintext CODE >125:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+9D maintext CODE >125:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+A1 maintext CODE >126:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+AA maintext CODE >127:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+AD maintext CODE >127:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
+B0 maintext CODE >127:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Slave.X/main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -215,19 +215,19 @@ __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _TMR0 1 0 ABS 0 - dist/default/production/Slave.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcXFgjeIN.o
+___sp 0 0 STACK 2 stack /tmp/xcXnAkcGk.o
 _main 28 0 CODE 0 maintext dist/default/production/Slave.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production/Slave.X.production.o
-start 18 0 CODE 0 init /tmp/xcXFgjeIN.o
+start 18 0 CODE 0 init /tmp/xcXnAkcGk.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production/Slave.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXFgjeIN.o
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXnAkcGk.o
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXnAkcGk.o
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXnAkcGk.o
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXnAkcGk.o
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXnAkcGk.o
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXnAkcGk.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production/Slave.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production/Slave.X.production.o
@@ -239,13 +239,13 @@ _SSPCONbits 14 0 ABS 0 - dist/default/production/Slave.X.production.o
 _CCPR1L 15 0 ABS 0 - dist/default/production/Slave.X.production.o
 _CCPR2L 1B 0 ABS 0 - dist/default/production/Slave.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - /tmp/xcXFgjeIN.o
-___stacklo 0 0 ABS 0 - /tmp/xcXFgjeIN.o
+___stackhi 0 0 ABS 0 - /tmp/xcXnAkcGk.o
+___stacklo 0 0 ABS 0 - /tmp/xcXnAkcGk.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production/Slave.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production/Slave.X.production.o
 __end_ofi1_reset_TMR0 2CC 0 CODE 0 text4 dist/default/production/Slave.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production/Slave.X.production.o
-___int_sp 0 0 STACK 2 stack /tmp/xcXFgjeIN.o
+___int_sp 0 0 STACK 2 stack /tmp/xcXnAkcGk.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -290,7 +290,7 @@ _isr 27A 0 CODE 0 text3 dist/default/production/Slave.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production/Slave.X.production.o
 __end_of_isr 2B8 0 CODE 0 text3 dist/default/production/Slave.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXFgjeIN.o
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXnAkcGk.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production/Slave.X.production.o
 __pmaintext 28 0 CODE 0 maintext dist/default/production/Slave.X.production.o
 __Lcommon 0 0 ABS 0 common -

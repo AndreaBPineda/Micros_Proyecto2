@@ -2647,6 +2647,100 @@ extern __bank0 __bit __timeout;
 # 32 "main.c" 2
 # 1 "/opt/microchip/xc8/v2.35/pic/include/c90/stdint.h" 1 3
 # 33 "main.c" 2
+# 1 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 1 3
+
+
+
+# 1 "/opt/microchip/mplabx/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8/pic/include/__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 5 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 2 3
+# 1 "/opt/microchip/mplabx/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8/pic/include/__null.h" 1 3
+# 6 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 2 3
+
+
+
+
+
+# 1 "/opt/microchip/xc8/v2.35/pic/include/c90/stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 12 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 2 3
+# 43 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 3
+# 1 "/opt/microchip/xc8/v2.35/pic/include/c90/conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "/opt/microchip/xc8/v2.35/pic/include/c90/errno.h" 1 3
+# 29 "/opt/microchip/xc8/v2.35/pic/include/c90/errno.h" 3
+extern int errno;
+# 9 "/opt/microchip/xc8/v2.35/pic/include/c90/conio.h" 2 3
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 86 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 2 3
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "/opt/microchip/xc8/v2.35/pic/include/c90/stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 34 "main.c" 2
 
 
 
@@ -2655,8 +2749,12 @@ extern __bank0 __bit __timeout;
 
 
 uint8_t data_SPI = 0;
+uint8_t position_servo = 0;
+uint8_t write_address = 0;
+uint8_t write_data = 0;
+
 uint8_t flag_EEPROM = 0;
-uint8_t current_SERVO = 0;
+uint8_t flag_EUSART = 0;
 
 uint8_t servo1 = 0;
 uint8_t servo2 = 0;
@@ -2665,12 +2763,15 @@ uint8_t servo4 = 0;
 
 uint8_t servo3_READ = 0;
 uint8_t servo4_READ = 0;
+uint8_t read_serial = 0;
 
 
 
 void setup(void);
 void reset_TMR0(void);
 void write_EEPROM(uint8_t address, uint8_t data);
+void print(char str[]);
+void run_EUSART(void);
 
 uint8_t read_EEPROM(uint8_t address);
 
@@ -2735,6 +2836,7 @@ void __attribute__((picinterrupt(("")))) isr (void)
             flag_EEPROM = !flag_EEPROM;
             PORTAbits.RA6 = flag_EEPROM;
             ADCON0bits.ADON = flag_EEPROM;
+            _delay((unsigned long)((10)*(4000000/4000.0)));
         }
 
 
@@ -2815,6 +2917,12 @@ void __attribute__((picinterrupt(("")))) isr (void)
             }
         }
 
+        else if (!PORTBbits.RB3)
+        {
+            flag_EUSART = !flag_EUSART;
+            PORTAbits.RA5 = flag_EUSART;
+        }
+
         INTCONbits.RBIF = 0;
     }
 
@@ -2822,6 +2930,11 @@ void __attribute__((picinterrupt(("")))) isr (void)
     if (PIR1bits.SSPIF)
     {
         PIR1bits.SSPIF = 0;
+    }
+
+    if (PIR1bits.RCIF)
+    {
+        read_serial = RCREG;
     }
 }
 
@@ -2832,10 +2945,15 @@ void main(void)
 {
     setup();
     reset_TMR0();
-    _delay((unsigned long)((50)*(4000000/4000000.0)));
+    _delay((unsigned long)((10)*(4000000/4000.0)));
 
     while (1)
     {
+        if (flag_EUSART)
+        {
+            run_EUSART();
+        }
+
 
         if (ADCON0bits.GO == 0)
         {
@@ -2887,10 +3005,14 @@ void setup(void)
     TRISA = 0x0F;
     PORTA = 0;
 
-    TRISB = 0x07;
+    TRISB = 0x0F;
     PORTB = 0;
 
-    TRISC = 0x10;
+    TRISCbits.TRISC1 = 0;
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC3 = 0;
+    TRISCbits.TRISC4 = 1;
+    TRISCbits.TRISC5 = 0;
     PORTC = 0;
 
     TRISD = 0x00;
@@ -2904,6 +3026,7 @@ void setup(void)
     WPUBbits.WPUB0 = 1;
     WPUBbits.WPUB1 = 1;
     WPUBbits.WPUB2 = 1;
+    WPUBbits.WPUB3 = 1;
 
 
     ADCON0bits.ADCS = 0b01;
@@ -2940,6 +3063,19 @@ void setup(void)
     OPTION_REGbits.PS0 = 1;
 
 
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 1;
+    BAUDCTLbits.BRG16 = 1;
+
+    SPBRG = 207;
+    SPBRGH = 0;
+
+    RCSTAbits.SPEN = 1;
+    TXSTAbits.TX9 = 0;
+    TXSTAbits.TXEN = 1;
+    RCSTAbits.CREN = 1;
+
+
     SSPCONbits.SSPM = 0b0000;
     SSPCONbits.CKP = 0;
     SSPCONbits.SSPEN = 1;
@@ -2964,6 +3100,9 @@ void setup(void)
     IOCBbits.IOCB0 = 1;
     IOCBbits.IOCB1 = 1;
     IOCBbits.IOCB2 = 1;
+    IOCBbits.IOCB3 = 1;
+
+    PIE1bits.RCIE = 1;
 
 
     PORTAbits.RA4 = 1;
@@ -3011,4 +3150,130 @@ uint8_t read_EEPROM(uint8_t address)
     EECON1bits.RD = 1;
 
     return EEDAT;
+}
+
+void print(char str[])
+{
+    uint8_t index = 0;
+
+    while (str[index]!= '\0')
+    {
+        if (PIR1bits.TXIF)
+        {
+            TXREG = str[index];
+            index++;
+        }
+    }
+}
+
+void run_EUSART(void)
+{
+    print("\r Menu principal: \r");
+    print("1. Control manual de servos\r");
+    print("2. Acceder a la EEPROM\r");
+    print("3. Salir de la terminal\r");
+
+    while(!PIR1bits.RCIF);
+
+    switch (read_serial)
+    {
+        case '1':
+            print("\r Seleccionar la posicion del servo a modificar: \r");
+            print("1. Izquierda\r");
+            print("2. Centro\r");
+            print("3. Derecha\r");
+
+            while(!PIR1bits.RCIF);
+
+            switch (read_serial)
+            {
+                case '1':
+                    position_servo = (250 >> 1) + 125;
+                    break;
+
+                case '2':
+                    position_servo = (0 >> 1) + 125;
+                    break;
+
+                case '3':
+                    position_servo = (127 >> 1) + 125;
+                    break;
+            }
+
+            print("\r Seleccionar servo a modificar (1-4): \r");
+
+            while(!PIR1bits.RCIF);
+
+            switch (read_serial)
+            {
+                case '1':
+                    data_SPI = position_servo;
+                    PORTDbits.RD0 = 1;
+                    PORTDbits.RD0 = 0;
+                    SSPBUF = data_SPI;
+                    break;
+
+                case '2':
+                    data_SPI = position_servo;
+                    PORTDbits.RD0 = 0;
+                    PORTDbits.RD0 = 1;
+                    SSPBUF = data_SPI;
+                    break;
+
+                case '3':
+                    CCPR1L = (position_servo>>1)+123;
+                    CCP1CONbits.DC1B = (position_servo & 0b01);
+                    CCP1CONbits.DC1B0 = (position_servo>>7);
+                    break;
+
+                case '4':
+                    CCPR2L = (position_servo>>1)+123;
+                    CCP1CONbits.DC1B = (position_servo & 0b01);
+                    CCP1CONbits.DC1B0 = (position_servo>>7);
+                    break;
+            }
+
+            break;
+
+        case '2':
+            print("\r Leer/Escribir en la EEPROM (1 o 2, respectivamente): \r");
+
+            while(!PIR1bits.RCIF);
+
+            switch (read_serial)
+            {
+                case '1':
+                    print("\r Ingresar direccion a leer (Hex/Bin): \r");
+                    print("(El valor almacenado se escribe en un servo)\r");
+
+                    while(!PIR1bits.RCIF);
+
+                    CCPR1L = read_EEPROM(read_serial);
+
+                    break;
+
+                case '2':
+                    print("\r Ingresar direccion a escribir (Hex/Bin): \r");
+
+                    while(!PIR1bits.RCIF);
+                    write_address = read_serial;
+
+                    print("\r Ingresar valor a escribir (numerico): \r");
+
+                    while(!PIR1bits.RCIF);
+                    write_data = read_serial;
+
+                    write_EEPROM(write_address, write_data);
+
+                    break;
+            }
+
+            break;
+
+        case '3':
+            flag_EUSART = 0;
+            print("\r Cerrando terminal... \r");
+            PORTAbits.RA5 = flag_EUSART;
+            break;
+    }
 }

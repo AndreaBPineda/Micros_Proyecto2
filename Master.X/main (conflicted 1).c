@@ -39,9 +39,6 @@
 //-------------------- Variables -----------------------------------------------
 //------------------------------------------------------------------------------
 uint8_t data_SPI = 0;
-uint8_t position_servo = 0;
-uint8_t write_address = 0;
-uint8_t write_data = 0;
 
 uint8_t flag_EEPROM = 0;
 uint8_t flag_EUSART = 0;
@@ -53,15 +50,14 @@ uint8_t servo4 = 0;
 
 uint8_t servo3_READ = 0;
 uint8_t servo4_READ = 0;
-uint8_t read_serial = 0;
 
 //-------------------- Declaración de funciones --------------------------------
 //------------------------------------------------------------------------------
 void setup(void);                                   // Configuración del PIC
 void reset_TMR0(void);                              // Resetear TMR0
 void write_EEPROM(uint8_t address, uint8_t data);   // Escritura EEPROM
-void print(char str[]);                             // Imprimir en terminal
-void run_EUSART(void);                              // Correr EUSART
+void show_char(char data);                          // Muestreo para EUSART
+void message_EUSART();                              // Mensaje en la EUSART
 
 uint8_t read_EEPROM(uint8_t address);               // Lectura EEPROM
 
@@ -221,11 +217,6 @@ void __interrupt() isr (void)
     {
         PIR1bits.SSPIF = 0;             // Desactivar interrupcion
     }
-    
-    if (PIR1bits.RCIF)                  // Recepción de datos
-    { 
-        read_serial = RCREG;            // Almacenar valor ingresado
-    }
 }
 
 //-------------------- Programa principal --------------------------------------
@@ -239,10 +230,10 @@ void main(void)
     
     while (1)                         
     {
-        if (flag_EUSART)
-        {
-            run_EUSART();
-        }
+//        if (flag_EUSART)
+//        {
+//            message_EUSART();
+//        }
         
         // Control de canales e inicio de conversion ADC
         if (ADCON0bits.GO == 0)         
@@ -298,11 +289,7 @@ void setup(void)                        // Configuración del PIC
     TRISB = 0x0F;                                        
     PORTB = 0;     
     
-    TRISCbits.TRISC1 = 0;
-    TRISCbits.TRISC2 = 0;
-    TRISCbits.TRISC3 = 0;
-    TRISCbits.TRISC4 = 1;
-    TRISCbits.TRISC5 = 0;
+    TRISC = 0x10;                       // PORTC Bits: |0|0|0|1|0|0|0|0|
     PORTC = 0;
     
     TRISD = 0x00;                          
@@ -352,18 +339,18 @@ void setup(void)                        // Configuración del PIC
     OPTION_REGbits.PS1 = 1;             //    -> Prescaler: 1:256
     OPTION_REGbits.PS0 = 1;             //
     
-    // Comunicación serial
-    TXSTAbits.SYNC = 0;                 // Comunicación ascincrona (full-duplex)
-    TXSTAbits.BRGH = 1;                 // Baud rate de alta velocidad 
-    BAUDCTLbits.BRG16 = 1;              // 16-bits para generar el baud rate
-    
-    SPBRG = 207;                        // Baud rate: 9600
-    SPBRGH = 0;                         //
-    
-    RCSTAbits.SPEN = 1;                 // Habilitar comunicación
-    TXSTAbits.TX9 = 0;                  // Utilizar solo 8 bits
-    TXSTAbits.TXEN = 1;                 // Habilitar transmisor
-    RCSTAbits.CREN = 1;                 // Habilitar receptor
+//    // Comunicación serial
+//    TXSTAbits.SYNC = 0;                 // Comunicación ascincrona (full-duplex)
+//    TXSTAbits.BRGH = 1;                 // Baud rate de alta velocidad 
+//    BAUDCTLbits.BRG16 = 1;              // 16-bits para generar el baud rate
+//    
+//    SPBRG = 207;                        // Baud rate: 9600
+//    SPBRGH = 0;                         //
+//    
+//    RCSTAbits.SPEN = 1;                 // Habilitar comunicación
+//    TXSTAbits.TX9 = 0;                  // Utilizar solo 8 bits
+//    TXSTAbits.TXEN = 1;                 // Habilitar transmisor
+//    RCSTAbits.CREN = 1;                 // Habilitar receptor
     
     // SPI
     SSPCONbits.SSPM = 0b0000;           // SPI: Master mode, Clock: Fosc/4
@@ -391,8 +378,6 @@ void setup(void)                        // Configuración del PIC
     IOCBbits.IOCB1 = 1;                 // On-change RB1
     IOCBbits.IOCB2 = 1;                 // On-change RB2
     IOCBbits.IOCB3 = 1;                 // On-change RB3
-    
-    PIE1bits.RCIE = 1;                  // Recepcion de datos
     
     // Valores iniciales
     PORTAbits.RA4 = 1;                  // Indicador Maestro
@@ -442,128 +427,55 @@ uint8_t read_EEPROM(uint8_t address)
     return EEDAT;                   // Retornar valor leido
 }
 
-void print(char str[])
-{   
-    uint8_t index = 0;
-    
-    while (str[index]!= '\0')
-    {
-        if (PIR1bits.TXIF)
-        {             
-            TXREG = str[index];    
-            index++;                   
-        }
-    }
-}
-
-void run_EUSART(void)
-{
-    print("\r Menu principal: \r");
-    print("1. Control manual de servos\r");
-    print("2. Acceder a la EEPROM\r");
-    print("3. Salir de la terminal\r");
-    
-    while(!PIR1bits.RCIF);                  // Recibir dato
-    
-    switch (read_serial)
-    {
-        case '1':
-            print("\r Seleccionar la posicion del servo a modificar: \r");
-            print("1. Izquierda\r");
-            print("2. Centro\r");
-            print("3. Derecha\r");
-            
-            while(!PIR1bits.RCIF);
-            
-            switch (read_serial)
-            {
-                case '1':
-                    position_servo = (250 >> 1) + 125;
-                    break;
-                    
-                case '2':
-                    position_servo = (0 >> 1) + 125;
-                    break;
-                    
-                case '3':
-                    position_servo = (127 >> 1) + 125;
-                    break;
-            }
-            
-            print("\r Seleccionar servo a modificar (1-4): \r");
-            
-            while(!PIR1bits.RCIF);
-            
-            switch (read_serial)
-            {
-                case '1':                           // Servo 1
-                    data_SPI = position_servo;
-                    PORTDbits.RD0 = 1;
-                    PORTDbits.RD0 = 0;
-                    SSPBUF = data_SPI;
-                    break;
-                    
-                case '2':                           // Servo 2
-                    data_SPI = position_servo;
-                    PORTDbits.RD0 = 0;
-                    PORTDbits.RD0 = 1;
-                    SSPBUF = data_SPI;
-                    break;
-                    
-                case '3':                           // Servo 3
-                    CCPR1L = (position_servo>>1)+123;
-                    CCP1CONbits.DC1B = (position_servo & 0b01);
-                    CCP1CONbits.DC1B0 = (position_servo>>7);
-                    break;
-                    
-                case '4':                           // Servo 4
-                    CCPR2L = (position_servo>>1)+123;
-                    CCP1CONbits.DC1B = (position_servo & 0b01);
-                    CCP1CONbits.DC1B0 = (position_servo>>7);
-                    break;
-            }
-            
-            break;
-            
-        case '2':
-            print("\r Leer/Escribir en la EEPROM (1 o 2, respectivamente): \r");
-            
-            while(!PIR1bits.RCIF);
-            
-            switch (read_serial)
-            {
-                case '1':
-                    print("\r Ingresar direccion a leer (Hex/Bin): \r");
-                    print("(El valor almacenado se escribe en un servo)\r");
-                    
-                    while(!PIR1bits.RCIF);
-                    
-                    CCPR1L = read_EEPROM(read_serial);      // Servo 3
-                    
-                    break;
-                    
-                case '2':
-                    print("\r Ingresar direccion a escribir (Hex/Bin): \r");
-                    
-                    while(!PIR1bits.RCIF);
-                    write_address = read_serial;
-                    
-                    print("\r Ingresar valor a escribir (numerico): \r");
-                    
-                    while(!PIR1bits.RCIF);
-                    write_data = read_serial;
-                    
-                    write_EEPROM(write_address, write_data);
-                    
-                    break;
-            }
-            
-            break;
-            
-        case '3':
-            flag_EUSART = 0;
-            print("\r Cerrando terminal... \r");
-            PORTAbits.RA5 = flag_EUSART;
-            break;
-    }
-}
+//void show_char(char data)
+//{
+//    while(!TXIF);                   // Esperar para poder enviar un caracter
+//    TXREG = data;                   // Enviar caracter
+//    return;
+//}
+//
+//void message_EUSART(void)
+//{
+//    __delay_ms(10);
+//    
+//    printf("\r Que desea realizar? :3\r");
+//    __delay_ms(10);
+//    
+//    printf("    (1) Control manual de motores\r");
+//    printf("    (2) Acceder a la EEPROM\r");
+//    printf("    (3) Salir de la terminal\r");
+//    
+//    while(!RCIF);                   // Esperar que se ingrese un dato
+//    
+//    if (RCREG == '1')               // Control manual de motores
+//    {
+//        __delay_ms(10);
+//        printf("\r Ingrese el numero de motor a controlar (1-4): \r");
+//        __delay_ms(10);
+//        
+//        while(!RCIF);
+//     
+//        if (RCREG == '1')           // Servo 1
+//        {
+//            printf("\r Escoja la posicion del motor: izquierd ");
+//            printf("    (1) Izquierda\r");
+//            printf("    (2) Centro\r");
+//            printf("    (3) Derecha\r");
+//        }
+//    }
+//    
+//    else if (RCREG == '2')          // Acceder a la EEPROM
+//    {
+//        
+//    }
+//    
+//    else if (RCREG == '3')          // Salir de la terminal
+//    {
+//        __delay_ms(10);
+//        printf("Programa finalizado. Cerrando terminal...");
+//        flag_EUSART = 0;                // Desactivar EUSART
+//        PORTAbits.RA5 = flag_EUSART;    // Apagar LED indicador
+//    }
+//        
+//    return;
+//}
