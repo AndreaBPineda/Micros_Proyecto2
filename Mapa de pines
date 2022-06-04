@@ -1,0 +1,38 @@
+
+PIC - Maestro:
+	
+	- Entradas:
+		- Potenciometros:
+			- RA0
+			- RA1
+			- RA2
+			- RA3
+		- Pushbuttons:
+			- RB0: Modo escritura/lectura
+			- RB1: Posicion 1 a guardar
+			- RB2: Posicion 2 a guardar
+			- RB3: Activar/Desactivar EUSART
+		- Otros: RC4/SDI
+
+	- Salidas:
+		- LEDs:
+			- RA4: Indicador de PIC Maestro
+			- RA5: Indicador de EUSART
+		- RA7: Conectado hacia el SS del PIC esclavo (RA5)
+		- RC1, RC2, RC3, RC5: pines de salida
+		- RD0 y RD1: selectores de servos en el PIC esclavo (conectar a RB0 y RB1, respectivamente).
+
+	- Otros:
+		- RC6 y RC7 (TX y RX): conectados a los pines de la terminal
+
+PIC - Esclavo:
+
+	- Entradas:
+		- RA5/SS
+		- RB0 y RB1: Selectores de servos, conectados a RD0 y RD1 que proveen su valor
+		- RC3/SCK y RC4/SDI
+
+	- Salidas:
+		- RC1, RC2, RC5
+
+
