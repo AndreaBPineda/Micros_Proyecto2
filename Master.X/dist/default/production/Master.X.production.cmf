@@ -11,6 +11,11 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$/tmp/xcXGHlEiP.o
+idloc IDLOC 5 2000 2000 4 2 1
+reset_vec CODE 0 0 0 3 2 1
+end_init CODE 0 C C 3 2 1
+config CONFIG 4 2007 2007 2 2 1
 $dist/default/production/Master.X.production.o
 cinit CODE 0 F F 13 2 1
 idloc IDLOC 5 2000 2000 4 2 1
@@ -32,11 +37,6 @@ bssBANK0 BANK0 1 28 28 7 1 1
 stringtext STRCODE 0 300 300 1E3 2 256
 strings STRING 0 2A0 2A0 12 2 1
 bssCOMMON COMMON 1 70 70 6 1 1
-config CONFIG 4 2007 2007 2 2 1
-$/tmp/xcXBoEMmd.o
-idloc IDLOC 5 2000 2000 4 2 1
-reset_vec CODE 0 0 0 3 2 1
-end_init CODE 0 C C 3 2 1
 config CONFIG 4 2007 2007 2 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -87,26 +87,26 @@ STRING 7FD-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/Master.X.production.o
-F cinit CODE >1104:/tmp/xcXOfNoEk.s
-F cinit CODE >1107:/tmp/xcXOfNoEk.s
-F cinit CODE >1157:/tmp/xcXOfNoEk.s
-10 cinit CODE >1158:/tmp/xcXOfNoEk.s
-11 cinit CODE >1159:/tmp/xcXOfNoEk.s
-12 cinit CODE >1160:/tmp/xcXOfNoEk.s
-13 cinit CODE >1161:/tmp/xcXOfNoEk.s
-14 cinit CODE >1162:/tmp/xcXOfNoEk.s
-15 cinit CODE >1165:/tmp/xcXOfNoEk.s
-16 cinit CODE >1166:/tmp/xcXOfNoEk.s
-17 cinit CODE >1167:/tmp/xcXOfNoEk.s
-18 cinit CODE >1168:/tmp/xcXOfNoEk.s
-19 cinit CODE >1169:/tmp/xcXOfNoEk.s
-1A cinit CODE >1170:/tmp/xcXOfNoEk.s
-1B cinit CODE >1171:/tmp/xcXOfNoEk.s
-1C cinit CODE >1172:/tmp/xcXOfNoEk.s
-1D cinit CODE >1173:/tmp/xcXOfNoEk.s
-1E cinit CODE >1179:/tmp/xcXOfNoEk.s
-1E cinit CODE >1181:/tmp/xcXOfNoEk.s
-1F cinit CODE >1182:/tmp/xcXOfNoEk.s
+F cinit CODE >1104:/tmp/xcXePNaJB.s
+F cinit CODE >1107:/tmp/xcXePNaJB.s
+F cinit CODE >1157:/tmp/xcXePNaJB.s
+10 cinit CODE >1158:/tmp/xcXePNaJB.s
+11 cinit CODE >1159:/tmp/xcXePNaJB.s
+12 cinit CODE >1160:/tmp/xcXePNaJB.s
+13 cinit CODE >1161:/tmp/xcXePNaJB.s
+14 cinit CODE >1162:/tmp/xcXePNaJB.s
+15 cinit CODE >1165:/tmp/xcXePNaJB.s
+16 cinit CODE >1166:/tmp/xcXePNaJB.s
+17 cinit CODE >1167:/tmp/xcXePNaJB.s
+18 cinit CODE >1168:/tmp/xcXePNaJB.s
+19 cinit CODE >1169:/tmp/xcXePNaJB.s
+1A cinit CODE >1170:/tmp/xcXePNaJB.s
+1B cinit CODE >1171:/tmp/xcXePNaJB.s
+1C cinit CODE >1172:/tmp/xcXePNaJB.s
+1D cinit CODE >1173:/tmp/xcXePNaJB.s
+1E cinit CODE >1179:/tmp/xcXePNaJB.s
+1E cinit CODE >1181:/tmp/xcXePNaJB.s
+1F cinit CODE >1182:/tmp/xcXePNaJB.s
 4 intentry CODE >70:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Master.X/main.c
 2B2 text10 CODE >435:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Master.X/main.c
 2B3 text10 CODE >437:/home/andrea/UVG/Ciclos/Ciclo5/Cursos/PrograDeMicros/Laboratorio/Proyecto2/Master.X/main.c
@@ -513,20 +513,20 @@ __Lstringtext 0 0 ABS 0 stringtext -
 write_EEPROM@data 20 0 BANK0 1 cstackBANK0 dist/default/production/Master.X.production.o
 __Hstrings 0 0 ABS 0 strings -
 _TMR0 1 0 ABS 0 - dist/default/production/Master.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcXBoEMmd.o
+___sp 0 0 STACK 2 stack /tmp/xcXGHlEiP.o
 _main E42 0 CODE 0 maintext dist/default/production/Master.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production/Master.X.production.o
-start 18 0 CODE 0 init /tmp/xcXBoEMmd.o
+start 18 0 CODE 0 init /tmp/xcXGHlEiP.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production/Master.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 _read_EEPROM FD2 0 CODE 0 text4 dist/default/production/Master.X.production.o
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXBoEMmd.o
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXBoEMmd.o
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXBoEMmd.o
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXBoEMmd.o
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXBoEMmd.o
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXBoEMmd.o
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXGHlEiP.o
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXGHlEiP.o
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXGHlEiP.o
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXGHlEiP.o
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXGHlEiP.o
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXGHlEiP.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production/Master.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production/Master.X.production.o
@@ -544,8 +544,8 @@ i1read_EEPROM@address 76 0 COMMON 1 cstackCOMMON dist/default/production/Master.
 _EECON2 18D 0 ABS 0 - dist/default/production/Master.X.production.o
 _position_servo 74 0 COMMON 1 bssCOMMON dist/default/production/Master.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - /tmp/xcXBoEMmd.o
-___stacklo 0 0 ABS 0 - /tmp/xcXBoEMmd.o
+___stackhi 0 0 ABS 0 - /tmp/xcXGHlEiP.o
+___stacklo 0 0 ABS 0 - /tmp/xcXGHlEiP.o
 _BAUDCTLbits 187 0 ABS 0 - dist/default/production/Master.X.production.o
 _WPUBbits 95 0 ABS 0 - dist/default/production/Master.X.production.o
 __end_of_run_EUSART CF8 0 CODE 0 text2 dist/default/production/Master.X.production.o
@@ -557,7 +557,7 @@ _SPBRGH 9A 0 ABS 0 - dist/default/production/Master.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production/Master.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production/Master.X.production.o
 i1_write_EEPROM 504 0 CODE 0 text8 dist/default/production/Master.X.production.o
-___int_sp 0 0 STACK 2 stack /tmp/xcXBoEMmd.o
+___int_sp 0 0 STACK 2 stack /tmp/xcXGHlEiP.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -610,7 +610,7 @@ __end_of_isr 504 0 CODE 0 text7 dist/default/production/Master.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 540 0 STRING 0 strings dist/default/production/Master.X.production.o
 _read_serial 70 0 COMMON 1 bssCOMMON dist/default/production/Master.X.production.o
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXBoEMmd.o
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXGHlEiP.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 _RCSTAbits 18 0 ABS 0 - dist/default/production/Master.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production/Master.X.production.o
